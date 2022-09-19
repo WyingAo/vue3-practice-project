@@ -1,13 +1,25 @@
 <template>
-  <div>
-     <h2>登录页面</h2>
-  </div>
+<div class="login">
+<loginPanel></loginPanel>
+</div>
 </template>
 
-<script setup>
-
+<script lang="ts">
+import { defineComponent } from 'vue'
+import loginPanel from './login-ui/loginPanel.vue';
+export default defineComponent({
+  components:{
+    loginPanel
+  },
+  setup(){}
+})
 </script>
 
 <style lang="scss" scoped>
-
+.login{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(159, 184, 187);
+}
 </style>
