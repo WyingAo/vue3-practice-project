@@ -53,9 +53,9 @@ const rules = {
 const onSubmit = () => {
   ruleFormRef.value?.validate((valid)=>{
     if(valid){
-
+     
     }else {
-      
+
     }
   })
 }
@@ -69,6 +69,6 @@ const onSubmit = () => {
   width: 280px;
 }
 .el-button {
-margin-left: 70px;
+margin-left: 58px;
 }
 </style>

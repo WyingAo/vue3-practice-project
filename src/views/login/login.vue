@@ -1,5 +1,6 @@
 <template>
 <div class="login">
+  <h1>{{login.count}}</h1>
 <loginPanel></loginPanel>
 </div>
 </template>
@@ -7,11 +8,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import loginPanel from './login-ui/loginPanel.vue';
+import useStore from '@/store'
 export default defineComponent({
   components:{
     loginPanel
   },
-  setup(){}
+  setup(){
+    const { login } = useStore()
+    return {login}
+  }
 })
 </script>
 

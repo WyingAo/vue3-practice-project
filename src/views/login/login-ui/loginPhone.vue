@@ -31,7 +31,7 @@ const onSubmit = () => {
 
 <style lang="scss" scoped>
 .login-form {
-  padding-left: 36px;
+  padding-left: 46px;
 }
 .el-input {
   width: 280px;
