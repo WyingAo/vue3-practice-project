@@ -26,7 +26,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/api':{
-        target:'http://cms-api.tj520.top',
+        target:'https://cms-api.tj520.top/',
         changeOrigin:true,
         rewrite:(path)=>path.replace(/^\/api/, "")
       }

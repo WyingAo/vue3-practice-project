@@ -20,9 +20,15 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
 // 响应成功
   function(response){
+    if(response.status === 200){
+      const data = response.data
+      return data
+    }
     return response
   },
   function(err){
     return Promise.reject(err)
   }
 )
+
+export default instance

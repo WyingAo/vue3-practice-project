@@ -32,14 +32,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
 import navMenu from '@/components/nav-menu'
-const item = {
-  date: '2016-05-02',
-  name: 'Tom',
-  address: 'No. 189, Grove St, Los Angeles',
-}
 </script>
 
 

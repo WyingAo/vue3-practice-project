@@ -23,12 +23,13 @@
 <script setup lang="ts">
 import { reactive,ref } from 'vue'
 import type { ElForm } from 'element-plus'
+import useStore from '@/store'
 const ruleFormRef = ref<InstanceType<typeof ElForm>>()
 const form = reactive({
   username:'admin123',
   password:'admin123'
 })
-
+const { login } = useStore()
 const rules = {
   username:[
     {
@@ -53,9 +54,9 @@ const rules = {
 const onSubmit = () => {
   ruleFormRef.value?.validate((valid)=>{
     if(valid){
-     
+      login.Login(form)
     }else {
-
+      console.log(valid,'valid')
     }
   })
 }

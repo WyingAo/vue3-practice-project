@@ -1,6 +1,5 @@
 <template>
 <div class="login">
-  <h1>{{login.count}}</h1>
 <loginPanel></loginPanel>
 </div>
 </template>
@@ -14,8 +13,8 @@ export default defineComponent({
     loginPanel
   },
   setup(){
-    const { login } = useStore()
-    return {login}
+
+    return {}
   }
 })
 </script>
