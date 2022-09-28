@@ -7,7 +7,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import loginPanel from './login-ui/loginPanel.vue';
-import useStore from '@/store'
 export default defineComponent({
   components:{
     loginPanel
