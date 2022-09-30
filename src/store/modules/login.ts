@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
-import  {getLoginOut, getUserInfo}  from '@/api/login'
-import {ILoginData } from '@/api/types'
+import  {getLoginOut, getUserInfo,getUserMenu}  from '@/api/login'
+import {ILoginData,INavMenu } from '@/api/types'
 import LocalCache from '@/utils/request/cache'
 import router from '@/router'
 export default defineStore('home',{
   state:()=>({
     token:'',
     userInfo:{},
-    userMenus: []
+    userMenus: [] as INavMenu []
   }),
   actions:{
    async Login(data:ILoginData){
@@ -16,12 +16,17 @@ export default defineStore('home',{
          this.token = res.data.token
          LocalCache.setCache('token', res.data.token)
          await this.updateUserInfo(res.data.token)
+         await this.getUserMenus()
          router.replace('/home')
       }
    },
    async updateUserInfo(token:string){
-    const res = await getUserInfo(token)
-    console.log(res,65656)
+    const res = await getUserInfo()
+   },
+   async getUserMenus(){
+    const res =  await getUserMenu()
+    this.userMenus = res.data
+    LocalCache.setCache('userMenus',this.userMenus)
    }
   }
 })

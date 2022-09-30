@@ -6,22 +6,8 @@
     </el-aside>
 
     <el-container>
-      <el-header style="text-align: right; font-size: 12px">
-        <div class="toolbar">
-          <el-dropdown>
-            <el-icon style="margin-right: 8px; margin-top: 1px"
-              ><setting
-            /></el-icon>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>View</el-dropdown-item>
-                <el-dropdown-item>Add</el-dropdown-item>
-                <el-dropdown-item>Delete</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-          <span>Tom</span>
-        </div>
+      <el-header>
+     <NavHeader></NavHeader>
       </el-header>
 
       <el-main>
@@ -32,8 +18,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
 import navMenu from '@/components/nav-menu'
+import NavHeader from '@/components/nav-header'
 </script>
 
 
@@ -60,4 +46,5 @@ import navMenu from '@/components/nav-menu'
 .el-menu {
   height: 100%;
 }
+
 </style>

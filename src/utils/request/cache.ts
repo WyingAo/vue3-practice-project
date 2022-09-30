@@ -5,9 +5,9 @@ class LocalCache {
   }
   // 获取存储数据
   getCache(key:string):string | null {
-    const result = window.localStorage.getItem(key) 
+    const result = window.localStorage.getItem(key)
     if(result){
-      return result
+      return JSON.parse(result)
     }else {
       return null
     }

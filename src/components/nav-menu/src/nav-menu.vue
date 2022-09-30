@@ -9,56 +9,32 @@
   <img src="~@/assets/image/测试图片.webp" alt="">
   <h2>v3+ts</h2>
   </div>
-    <el-sub-menu index="1">
+   <template v-for="item in NavMenus " :key="item.id">
+    <el-sub-menu :index="item.id + ''" >
       <template #title>
-        <el-icon><HomeFilled /></el-icon>
-        <span>首页</span>
+        <el-icon><Monitor /></el-icon>
+        <span>{{item.title}}</span>
       </template>
+      <template v-for="itemChildren in item.children" :key="itemChildren.id">
       <el-menu-item-group>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
+        <el-menu-item :index="itemChildren.id +''">{{itemChildren.title}}</el-menu-item>
       </el-menu-item-group>
-      <el-menu-item-group>
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
+     </template>
     </el-sub-menu>
-    <el-sub-menu index="2">
-      <template #title>
-        <el-icon><ChatLineSquare /></el-icon>
-        <span>首页</span>
-      </template>
-      <el-menu-item-group>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group>
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
-    </el-sub-menu>
-    <el-sub-menu index="3">
-      <template #title>
-        <el-icon><Tools /></el-icon>
-        <span>首页</span>
-      </template>
-      <el-menu-item-group>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group>
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
-    </el-sub-menu>
+  </template>
   </el-menu>
+   
 </template>
 
 <script setup lang="ts">
 import {
-  HomeFilled,
-  ChatLineSquare,
-  Tools
+  Monitor
 } from '@element-plus/icons-vue'
+import LocalCache from '@/utils/request/cache'
+const NavMenus = LocalCache.getCache('userMenus')
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
+  
 }
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)

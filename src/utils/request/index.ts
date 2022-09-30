@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {BASE_URL,TIME_OUT} from './config'
+import  LocalCache  from './cache'
 const instance = axios.create({
   baseURL:BASE_URL,
   timeout: TIME_OUT
@@ -9,6 +10,10 @@ const instance = axios.create({
 instance.interceptors.request.use(
 // 请求成功
   function(config){
+    const token = LocalCache.getCache('token')
+    if(token) {
+      config.headers!.Authorization = 'Bearer ' + token
+    }
     return config
   },
   function(err){
