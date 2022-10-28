@@ -1,10 +1,12 @@
+import { INavMenu } from "@/api/types"
+
 class LocalCache {
   // 存储数据
   setCache(key:string,value:any):void{
     window.localStorage.setItem(key,JSON.stringify(value))
   }
   // 获取存储数据
-  getCache(key:string):string | null {
+  getCache(key:string):null | INavMenu[] {
     const result = window.localStorage.getItem(key)
     if(result){
       return JSON.parse(result)

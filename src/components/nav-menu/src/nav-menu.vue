@@ -2,6 +2,7 @@
   <el-menu
     default-active="2"
     class="el-menu-vertical-demo"
+    background-color="#1b394e"
     @open="handleOpen"
     @close="handleClose"
   >
@@ -17,7 +18,7 @@
       </template>
       <template v-for="itemChildren in item.children" :key="itemChildren.id">
       <el-menu-item-group>
-        <el-menu-item :index="itemChildren.id +''">{{itemChildren.title}}</el-menu-item>
+        <el-menu-item @click="goPage(itemChildren.url)" :index="itemChildren.id +''">{{itemChildren.title}}</el-menu-item>
       </el-menu-item-group>
      </template>
     </el-sub-menu>
@@ -31,20 +32,22 @@ import {
   Monitor
 } from '@element-plus/icons-vue'
 import LocalCache from '@/utils/request/cache'
+import { useRouter } from 'vue-router';
 const NavMenus = LocalCache.getCache('userMenus')
+const router = useRouter ()
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
-  
 }
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
+const goPage =  (key:string) => {
+  router.push(key)
+}
 </script>
 
 <style lang="scss" scoped>
-.el-menu { 
-  background-color:#1b394e ;
-}
+
 
 .wya-menu-title{
   display: flex;

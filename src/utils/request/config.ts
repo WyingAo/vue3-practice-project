@@ -5,7 +5,7 @@ switch(process.env.NODE_ENV){
     BASE_URL = '/api'
     break
   case 'production':
-    BASE_URL = 'http://cms-api.tj520.top'
+    BASE_URL = 'https://cms-api.tj520.top'
     break
   case 'test':
     BASE_URL = ''

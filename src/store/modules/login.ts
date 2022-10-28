@@ -3,7 +3,8 @@ import  {getLoginOut, getUserInfo,getUserMenu}  from '@/api/login'
 import {ILoginData,INavMenu } from '@/api/types'
 import LocalCache from '@/utils/request/cache'
 import router from '@/router'
-export default defineStore('home',{
+import { mapMenus } from '@/utils/request/map-menus'
+export default defineStore('main',{
   state:()=>({
     token:'',
     userInfo:{},
@@ -17,7 +18,7 @@ export default defineStore('home',{
          LocalCache.setCache('token', res.data.token)
          await this.updateUserInfo(res.data.token)
          await this.getUserMenus()
-         router.replace('/home')
+         router.replace('/main')
       }
    },
    async updateUserInfo(token:string){
@@ -26,7 +27,18 @@ export default defineStore('home',{
    async getUserMenus(){
     const res =  await getUserMenu()
     this.userMenus = res.data
-    LocalCache.setCache('userMenus',this.userMenus)
+    LocalCache.setCache('userMenus',res.data)
+    this.storageUserMenu(res.data)
+   },
+   // 储存菜单
+   storageUserMenu(userMenus:INavMenu []){
+    const menuRoutes = mapMenus(userMenus)
+    console.log(menuRoutes,'menuRoutes')
+    // 注册路由
+    menuRoutes.forEach((route)=>{
+      console.log(route,'998877')
+      router.addRoute('main',route)
+    })
    }
   }
 })
